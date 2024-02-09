@@ -17,7 +17,7 @@ import pages.signupPage_Wdio;
 public class SaucelabAppTest {
 
 	public  AndroidDriver driver;
-	
+	public String ProductNameToAdd = "Sauce Labs Bike Light";
 	
 	@BeforeTest
 	public void setup() {
@@ -58,10 +58,18 @@ public class SaucelabAppTest {
         LoginPage_SauceLab loginPage = new LoginPage_SauceLab (this.driver);
         loginPage.login("standard_user", "secret_sauce");
         Assert.assertEquals(loginPage.actualText, "PRODUCTS");
-        
-        
-        
+      
     }
+	
+	@Test(dependsOnMethods = "testSignUp")
+	public void ProdCheckout() {
+		
+		   LoginPage_SauceLab loginPage = new LoginPage_SauceLab (this.driver);    
+		loginPage.addtoCart(ProductNameToAdd);
+		loginPage.cart();
+		Assert.assertEquals(loginPage.actualCartName, ProductNameToAdd);
+		Assert.assertEquals(loginPage.actualCartPrice, loginPage.actualProdPrice);
+	}
 
     @AfterTest
 	public void tearDown() {

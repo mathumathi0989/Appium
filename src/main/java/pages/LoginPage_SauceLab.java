@@ -15,11 +15,29 @@ public class LoginPage_SauceLab {
 	
 	private AppiumDriver driver;
 	private WebDriverWait wait;
+	//login page
 	private By uname = AppiumBy.accessibilityId("test-Username");
 	private By pwd = AppiumBy.accessibilityId("test-Password");
 	private By login_Btn = AppiumBy.accessibilityId("test-LOGIN");
 	private By product_Text = AppiumBy.androidUIAutomator("new UiSelector().text(\"PRODUCTS\")");
 	public String actualText;
+	//product page
+		private By product_name;
+		public void setProductName(String prod_name) {
+	this.product_name = AppiumBy.androidUIAutomator("new UiSelector().text(\"" + prod_name + "\")");
+		}
+		private By prod_price = AppiumBy.accessibilityId("test-Price");
+		public String actualProdPrice;
+		private By addCart = AppiumBy.accessibilityId("test-ADD TO CART");
+		private By cart = AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup");
+		//cart page
+		public String actualCartName;
+		public String actualCartPrice;
+		private By cartName = AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"test-Description\"]/android.widget.TextView[1]");
+		private By cartPrice = AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"test-Price\"]/android.widget.TextView");
+		private By checkout_Btn = AppiumBy.accessibilityId("test-CHECKOUT");
+
+   // AppiumBy.accessibilityId("test-CONTINUE");
 	
 	public LoginPage_SauceLab (AndroidDriver driver) {
 		this.driver = driver;
@@ -35,6 +53,19 @@ public class LoginPage_SauceLab {
 		
 	}
 	
+	public String addtoCart(String prod_name) {
+		setProductName(prod_name);
+		this.wait.until(ExpectedConditions.elementToBeClickable(product_name)).click();
+		actualProdPrice = this.wait.until(ExpectedConditions.elementToBeClickable(prod_price)).getText();
+		this.wait.until(ExpectedConditions.elementToBeClickable(addCart)).click();
+		this.wait.until(ExpectedConditions.elementToBeClickable(cart)).click();
+		return actualProdPrice;
+	}
 	
+	public void cart() {
+		actualCartName = this.wait.until(ExpectedConditions.elementToBeClickable(cartName)).getText();
+		 actualCartPrice = this.wait.until(ExpectedConditions.elementToBeClickable(cartPrice)).getText();
+		 this.wait.until(ExpectedConditions.elementToBeClickable(checkout_Btn)).click();
+	}
 	
 }
