@@ -62,7 +62,7 @@ public class SaucelabAppTest {
     }
 	
 	@Test(dependsOnMethods = "testSignUp")
-	public void ProdCheckout() {
+	public void ProdCheckout() throws Exception {
 		
 		   LoginPage_SauceLab loginPage = new LoginPage_SauceLab (this.driver);    
 		loginPage.addtoCart(ProductNameToAdd);
