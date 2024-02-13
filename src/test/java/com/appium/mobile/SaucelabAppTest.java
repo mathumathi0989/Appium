@@ -69,8 +69,18 @@ public class SaucelabAppTest {
 		loginPage.cart();
 		Assert.assertEquals(loginPage.actualCartName, ProductNameToAdd);
 		Assert.assertEquals(loginPage.actualCartPrice, loginPage.actualProdPrice);
+		loginPage.checkout("Mathu", "Mathi", "12345");
+		loginPage.overview();
+		Assert.assertEquals(loginPage.finishName, ProductNameToAdd);
+		Assert.assertEquals(loginPage.finishPrice, loginPage.actualProdPrice);
+		loginPage.thankyou();
+		Assert.assertEquals(loginPage.ActualThankyou, "THANK YOU FOR YOU ORDER");
+		Assert.assertEquals(loginPage.ActualThankMessage, "Your order has been dispatched, and will arrive just as fast as the pony can get there!");
+		Assert.assertEquals(loginPage.actualText, "PRODUCTS");
 	}
 
+	
+	
     @AfterTest
 	public void tearDown() {
 		this.driver.quit ();

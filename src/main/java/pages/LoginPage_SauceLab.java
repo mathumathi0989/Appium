@@ -59,8 +59,36 @@ public class LoginPage_SauceLab {
 		private By checkout_Btn = AppiumBy.accessibilityId("test-CHECKOUT");
 		public String cartGest;
 
+		//checkout page 
+		private By fName = AppiumBy.accessibilityId("test-First Name");
+		private By lName = AppiumBy.accessibilityId("test-Last Name");
+		private By zip = AppiumBy.accessibilityId("test-Zip/Postal Code");
+		private By continueBtn = AppiumBy.xpath("//android.widget.TextView[@text=\"CONTINUE\"]");
 		
-	public LoginPage_SauceLab (AndroidDriver driver) {
+		//Checkout overview page
+		private By overviewName = AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"test-Description\"]/android.widget.TextView[1]");
+		private By overviewPrice = AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"test-Price\"]/android.widget.TextView[1]");
+		public String finishName;
+		public String finishPrice;
+		private By itemTotal = AppiumBy.xpath("//android.widget.TextView[contains(@text,\"Item\")]");
+		private By tax = AppiumBy.xpath("//android.widget.TextView[contains(@text,\"Tax\")]");
+		private By total = AppiumBy.xpath("//android.widget.TextView[contains(@text,\"Total\")]");
+		private By finish = AppiumBy.xpath("//android.widget.TextView[@text=\"FINISH\"]");
+		public String itemV;
+		public String taxV;
+		public String totalV;
+		
+		//Thank you page
+		private By thankyou = AppiumBy.xpath("//android.widget.TextView[@text=\"THANK YOU FOR YOU ORDER\"]");
+		private By thankMessage = AppiumBy.xpath("//android.widget.TextView[@text=\"Your order has been dispatched, and will arrive just as fast as the pony can get there!\"]");
+		public String ActualThankyou;
+		public String ActualThankMessage;
+		private By Bk_Home = AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"test-BACK HOME\"]");
+		
+		
+		
+		
+		public LoginPage_SauceLab (AndroidDriver driver) {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 			}
@@ -94,6 +122,39 @@ public class LoginPage_SauceLab {
 		 this.wait.until(ExpectedConditions.elementToBeClickable(checkout_Btn)).click();
 	}
 	
-
+	public void checkout(String FirstName, String LastName, String zipCode) {
+		 this.wait.until(ExpectedConditions.elementToBeClickable(fName)).sendKeys(FirstName);
+		 this.wait.until(ExpectedConditions.elementToBeClickable(lName)).sendKeys(LastName);
+		 this.wait.until(ExpectedConditions.elementToBeClickable(zip)).sendKeys(zipCode);
+		  this.wait.until(ExpectedConditions.elementToBeClickable(continueBtn)).click();; 
+	}
+	
+	public void overview() throws Exception {
+		finishName = this.wait.until(ExpectedConditions.elementToBeClickable(overviewName)).getText();
+		
+		finishPrice = this.wait.until(ExpectedConditions.elementToBeClickable(overviewPrice)).getText();
+		
+		
+		itemV = this.wait.until(ExpectedConditions.elementToBeClickable(itemTotal)).getText();
+		System.out.println(itemV);
+		
+		taxV = this.wait.until(ExpectedConditions.elementToBeClickable(tax)).getText();
+		System.out.println(taxV);
+		
+			totalV = this.wait.until(ExpectedConditions.elementToBeClickable(total)).getText();
+		System.out.println(totalV);
+		
+			this.driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"FINISH\"))")).click();;
+		Thread.sleep(700); 
+	}
+	
+	public void thankyou() {
+		ActualThankyou = this.wait.until(ExpectedConditions.elementToBeClickable(thankyou)).getText();
+		System.out.println(ActualThankyou);
+		ActualThankMessage = this.wait.until(ExpectedConditions.elementToBeClickable(thankMessage)).getText();
+		System.out.println(ActualThankMessage);
+		this.wait.until(ExpectedConditions.elementToBeClickable(Bk_Home)).click();;
+		actualText = this.wait.until(ExpectedConditions.elementToBeClickable(product_Text)).getText();
+	}
 	
 }
