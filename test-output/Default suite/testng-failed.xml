@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.appium.mobile.SaucelabAppTest">
+      <class name="appium.iOS.wdioApp_iOSTest">
         <methods>
           <include name="tearDown"/>
-          <include name="testSignUp"/>
           <include name="setup"/>
-          <include name="ProdCheckout"/>
+          <include name="testSignUp"/>
         </methods>
-      </class> <!-- com.appium.mobile.SaucelabAppTest -->
+      </class> <!-- appium.iOS.wdioApp_iOSTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
