@@ -42,9 +42,7 @@ public class LoginPage_iOS_SauceLab {
 		private By addCart = AppiumBy.iOSClassChain("**/XCUIElementTypeOther[`name == \"test-ADD TO CART\"`]");
 		private By cart = AppiumBy.iOSNsPredicateString("name == \"test-Cart\"");
 		private By backToProd = AppiumBy.accessibilityId("test-BACK TO PRODUCTS");
-		//**/XCUIElementTypeOther[`name == "1"`][4]
-		
-		
+	
 		//cart page
 		public String actualCartName;
 		public String actualCartPrice;
@@ -78,9 +76,8 @@ public class LoginPage_iOS_SauceLab {
 		public String ActualThankyou;
 		public String ActualThankMessage;
 		private By Bk_Home = AppiumBy.iOSNsPredicateString("name == \"test-BACK HOME\"");
-		
-		private PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 	
+		private PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 		
 		public LoginPage_iOS_SauceLab(IOSDriver driver) {
 		this.driver = driver;
@@ -88,7 +85,6 @@ public class LoginPage_iOS_SauceLab {
 			}
 
 	public String login (String username, String password){
-	//	this.wait.until(ExpectedConditions.elementToBeClickable(uname)).sendKeys(username);
 		 WebElement userNameField = this.wait.until(ExpectedConditions.elementToBeClickable(uname));
 		 userNameField.clear();
 		 userNameField.sendKeys(username);
@@ -104,26 +100,15 @@ public class LoginPage_iOS_SauceLab {
 	public String addtoCart(String prod_name) throws Exception  {
 		setProductName(prod_name);
 		this.wait.until(ExpectedConditions.elementToBeClickable(product_name)).click();
-		
 		actualProdPrice = this.wait.until(ExpectedConditions.elementToBeClickable(prod_price)).getText();
 		System.out.println(actualProdPrice);
-		
-		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		HashMap<String, String> scrollObject = new HashMap<String, String>();
 		scrollObject.put("direction", "down");
 		js.executeScript("mobile: scroll", scrollObject);
-		//HashMap<String, Object> scrollObject = new HashMap();
-	//scrollObject.put("predicateString", "name == 'test-ADD TO CART'");
-//	this.driver.executeScript("mobile: scroll", scrollObject);
-		
-		
 		this.wait.until(ExpectedConditions.elementToBeClickable(addCart)).click();
 	Thread.sleep(500); 
-	
-	//scrollObject.put("direction", "up");
-	//js.executeScript("mobile: scroll", scrollObject);
-		this.wait.until(ExpectedConditions.elementToBeClickable(cart)).click();
+	this.wait.until(ExpectedConditions.elementToBeClickable(cart)).click();
 		tap(358,55)	;
 		this.wait.until(ExpectedConditions.elementToBeClickable(cart)).click();
 		Thread.sleep(500); 
@@ -141,10 +126,8 @@ public class LoginPage_iOS_SauceLab {
 
 	public void cart() throws Exception {
 		actualCartName = this.wait.until(ExpectedConditions.elementToBeClickable(cartName)).getText();
-	//System.out.println(actualCartName);
 		 actualCartPrice = this.wait.until(ExpectedConditions.elementToBeClickable(cartPrice)).getText();
 		 Thread.sleep(500); 
-	//	System.out.println(actualCartPrice);
 		 this.wait.until(ExpectedConditions.elementToBeClickable(checkout_Btn)).click();
 	}
 	
@@ -157,27 +140,18 @@ public class LoginPage_iOS_SauceLab {
 	
 	public void overview() throws Exception {
 		finishName = this.wait.until(ExpectedConditions.elementToBeClickable(overviewName)).getText();
-		
 		finishPrice = this.wait.until(ExpectedConditions.elementToBeClickable(overviewPrice)).getText();
-		
-		
 		itemV = this.wait.until(ExpectedConditions.elementToBeClickable(itemTotal)).getText();
 		System.out.println(itemV);
-		
 		taxV = this.wait.until(ExpectedConditions.elementToBeClickable(tax)).getText();
-		System.out.println(taxV);
-		
-			totalV = this.wait.until(ExpectedConditions.elementToBeClickable(total)).getText();
+		System.out.println(taxV);	
+		totalV = this.wait.until(ExpectedConditions.elementToBeClickable(total)).getText();
 		System.out.println(totalV);
-		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		HashMap<String, String> scrollObject = new HashMap<String, String>();
 		scrollObject.put("direction", "down");
 		js.executeScript("mobile: scroll", scrollObject);
-		
 		 this.wait.until(ExpectedConditions.elementToBeClickable(finish)).click();; 
-		//	this.driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"FINISH\"))")).click();;
-		//Thread.sleep(700); 
 	}
 	
 	public void thankyou() {
