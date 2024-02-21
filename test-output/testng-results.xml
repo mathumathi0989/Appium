@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-02-16T17:57:16 EST" name="Default suite" finished-at="2024-02-16T17:57:36 EST" duration-ms="19460">
+  <suite started-at="2024-02-21T17:20:13 EST" name="Default suite" finished-at="2024-02-21T17:20:59 EST" duration-ms="46041">
     <groups>
     </groups>
-    <test started-at="2024-02-16T17:57:16 EST" name="Default test" finished-at="2024-02-16T17:57:36 EST" duration-ms="19460">
-      <class name="appium.iOS.wdioApp_iOSTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:appium.iOS.wdioApp_iOSTest@35dab4eb]" started-at="2024-02-16T17:57:16 EST" name="setup" finished-at="2024-02-16T17:57:24 EST" duration-ms="8308" status="PASS">
+    <test started-at="2024-02-21T17:20:13 EST" name="Default test" finished-at="2024-02-21T17:20:59 EST" duration-ms="46041">
+      <class name="appium.iOS.Saucelab_iOSTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:appium.iOS.Saucelab_iOSTest@5f049ea1]" started-at="2024-02-21T17:20:13 EST" name="setup" finished-at="2024-02-21T17:20:20 EST" duration-ms="7093" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testSignUp()[pri:0, instance:appium.iOS.wdioApp_iOSTest@35dab4eb]" started-at="2024-02-16T17:57:25 EST" name="testSignUp" finished-at="2024-02-16T17:57:34 EST" duration-ms="9814" status="PASS">
+        <test-method signature="testSignUp()[pri:0, instance:appium.iOS.Saucelab_iOSTest@5f049ea1]" started-at="2024-02-21T17:20:20 EST" name="testSignUp" finished-at="2024-02-21T17:20:25 EST" duration-ms="5156" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSignUp -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:appium.iOS.wdioApp_iOSTest@35dab4eb]" started-at="2024-02-16T17:57:34 EST" name="tearDown" finished-at="2024-02-16T17:57:36 EST" duration-ms="1210" status="PASS">
+        <test-method signature="ProdCheckout()[pri:0, instance:appium.iOS.Saucelab_iOSTest@5f049ea1]" started-at="2024-02-21T17:20:25 EST" name="ProdCheckout" finished-at="2024-02-21T17:20:58 EST" depends-on-methods="appium.iOS.Saucelab_iOSTest.testSignUp" duration-ms="32553" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ProdCheckout -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:appium.iOS.Saucelab_iOSTest@5f049ea1]" started-at="2024-02-21T17:20:58 EST" name="tearDown" finished-at="2024-02-21T17:20:59 EST" duration-ms="1118" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- appium.iOS.wdioApp_iOSTest -->
+      </class> <!-- appium.iOS.Saucelab_iOSTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
